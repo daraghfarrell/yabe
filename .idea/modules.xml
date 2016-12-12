@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/yabe.iml" filepath="$PROJECT_DIR$/.idea/modules/yabe.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/yabe_main.iml" filepath="$PROJECT_DIR$/.idea/modules/yabe_main.iml" group="yabe" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/yabe_test.iml" filepath="$PROJECT_DIR$/.idea/modules/yabe_test.iml" group="yabe" />
+    </modules>
+  </component>
+</project>

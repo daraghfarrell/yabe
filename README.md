@@ -3,6 +3,7 @@ Yabe - Reverse Auction App
 
 
 Features
+
 (1) WTB - Want to Buy (Buyers)
 a. As a buyer I want to post a WTB add to that vendors can offer products to me
 b. As a buyer I want to be informed of vendor offers so that I can keep track of them

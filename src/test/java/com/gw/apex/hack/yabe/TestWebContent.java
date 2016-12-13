@@ -32,4 +32,10 @@ public class TestWebContent {
         String response = template.getForObject("/list", String.class);
         assertThat(response, containsString("List:"));
     }
+
+    @Test
+    public void testRestController() throws Exception {
+        String response = template.getForObject("/anydata", String.class);
+        assertThat(response, containsString("{\"name\":\"resttest\",\"number\":1}"));
+    }
 }

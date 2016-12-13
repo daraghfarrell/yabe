@@ -9,6 +9,7 @@ buildscript {
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.2.RELEASE")
     }
+
 }
 
 apply plugin: 'java'
@@ -29,15 +30,18 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
-    compile 'org.springframework.data:spring-data-gemfire'
+//    compile ("org.springframework.data:spring-data")
 
-    compile group: 'junit', name: 'junit', version: '4.12'
-    compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
-    compile 'org.springframework.boot:spring-boot-devtools'
-    compile ('org.springframework.boot:spring-boot-starter-web') {
+    compile ("org.springframework.boot:spring-boot-starter-data-gemfire")
+    runtime ("org.springframework.shell:spring-shell:1.0.0.RELEASE")
+
+    compile (group: 'junit', name: 'junit', version: '4.12')
+    compile ("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile ("org.springframework.boot:spring-boot-devtools")
+    compile ("org.springframework.boot:spring-boot-starter-web") {
         exclude module: "spring-boot-starter-tomcat"
     }
-    compile 'org.springframework.boot:spring-boot-starter-jetty'
-    compile 'org.springframework.boot:spring-boot-starter-actuator'
+    compile ("org.springframework.boot:spring-boot-starter-jetty")
+    compile ("org.springframework.boot:spring-boot-starter-actuator")
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }

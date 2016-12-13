@@ -51,10 +51,15 @@ public class WebControllerTest {
                 .andExpect(status().isNotFound());
     }
 
-
     @Test
     public void testWebControllerAliveIs200() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/alive").accept(MediaType.ALL))
+                .andExpect(status().is2xxSuccessful());
+    }
+
+    @Test
+    public void testWebControllerListIs200() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/list").accept(MediaType.ALL))
                 .andExpect(status().is2xxSuccessful());
     }
 }

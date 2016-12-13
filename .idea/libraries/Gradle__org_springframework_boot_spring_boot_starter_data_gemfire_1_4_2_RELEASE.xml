@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.springframework.boot:spring-boot-starter-data-gemfire:1.4.2.RELEASE">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-data-gemfire/1.4.2.RELEASE/bef7d3f6b7dacc954b74234a50095b3693d5b7e/spring-boot-starter-data-gemfire-1.4.2.RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-data-gemfire/1.4.2.RELEASE/212baddd5d289e6328802b9c0695ce55354ef686/spring-boot-starter-data-gemfire-1.4.2.RELEASE-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

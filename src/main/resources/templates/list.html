@@ -5,6 +5,17 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+
+
+    <form action="/addToList">
+        <fieldset>
+            <input type="text" name="name" />
+            <input type="number" name="number" />
+            <input type="submit" value="Add" />
+        </fieldset>
+    </form>
+
+
     <p th:text="'List: '+ ${all}" />
 
     <table>

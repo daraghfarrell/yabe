@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @SpringBootTest
-public class WebControllerTest {
+public class TestWebControllers {
 
 
     private MockMvc mvc;
@@ -54,12 +54,6 @@ public class WebControllerTest {
     @Test
     public void testWebControllerAliveIs200() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/alive").accept(MediaType.ALL))
-                .andExpect(status().is2xxSuccessful());
-    }
-
-    @Test
-    public void testWebControllerListIs200() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/list").accept(MediaType.ALL))
                 .andExpect(status().is2xxSuccessful());
     }
 }

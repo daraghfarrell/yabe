@@ -16,7 +16,7 @@ import static org.junit.Assert.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class WebContentTest {
+public class TestWebContent {
 
     @Autowired
     private TestRestTemplate template;
@@ -27,4 +27,9 @@ public class WebContentTest {
         assertThat(response, containsString("Hello"));
     }
 
+    @Test
+    public void testListReturnsAList() throws Exception {
+        String response = template.getForObject("/list", String.class);
+        assertThat(response, containsString("List:"));
+    }
 }

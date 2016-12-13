@@ -14,7 +14,7 @@ import static org.hamcrest.Matchers.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class AnyDomainOneGemfireTest {
+public class TestAnyDomainOneGemfire {
     @Autowired
     AnyDomainRepo anyDomainRepo;
 

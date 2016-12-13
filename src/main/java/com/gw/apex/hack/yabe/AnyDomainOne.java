@@ -7,34 +7,34 @@ import org.springframework.data.gemfire.mapping.Region;
  * @author dfarrell on 13/12/2016.
  */
 
-@Region
+@Region("test")
 public class AnyDomainOne {
 
     @Id
-    public String stringId;
-    public int intId;
+    public String name;
+    public int number;
 
     @Override
     public String toString() {
         return "AnyDomainOne{" +
-                "stringId='" + stringId + '\'' +
-                ", intId=" + intId +
+                "name='" + name + '\'' +
+                ", number=" + number +
                 '}';
     }
 
-    public int getIntId() {
-        return intId;
+    public int getNumber() {
+        return number;
     }
 
-    public void setIntId(int intId) {
-        this.intId = intId;
+    public void setNumber(int number) {
+        this.number = number;
     }
 
-    public String getStringId() {
-        return stringId;
+    public String getName() {
+        return name;
     }
 
-    public void setStringId(String stringId) {
-        this.stringId = stringId;
+    public void setName(String name) {
+        this.name = name;
     }
 }

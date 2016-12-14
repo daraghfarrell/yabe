@@ -36,6 +36,9 @@ public class TestAnyDomainOneGemfire {
 
         assertThat(name0, not(resultB));
         assertThat(name1, not(resultA));
+
+        anyDomainRepo.delete(name0);
+        anyDomainRepo.delete(name1);
     }
 
 }

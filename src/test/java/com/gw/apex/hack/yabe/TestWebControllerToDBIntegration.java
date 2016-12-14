@@ -7,7 +7,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertThat;
 
@@ -35,12 +34,13 @@ public class TestWebControllerToDBIntegration {
         anyDomainRepo.save(any0);
         anyDomainRepo.save(any1);
 
-        assertThat(anyDomainRepo.findAll().spliterator().getExactSizeIfKnown(), is(2L));
-
         String response = template.getForObject("/list", String.class);
         assertThat(response, containsString("List:"));
         assertThat(response, containsString(name0));
         assertThat(response, containsString(name1));
+
+        anyDomainRepo.delete(name0);
+        anyDomainRepo.delete(name1);
     }
 
     @Test

@@ -7,8 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.hamcrest.Matchers.containsString;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.*;
 
 /**
  * @author dfarrell on 12/12/2016.
@@ -24,18 +24,14 @@ public class TestWebContent {
     @Test
     public void testAliveReturnsHello() throws Exception {
         String response = template.getForObject("/alive", String.class);
+        assertThat(response.contains("404"), is(false));
         assertThat(response, containsString("Hello"));
     }
 
     @Test
     public void testListReturnsAList() throws Exception {
         String response = template.getForObject("/list", String.class);
+        assertThat(response.contains("404"), is(false));
         assertThat(response, containsString("List:"));
-    }
-
-    @Test
-    public void testRestController() throws Exception {
-        String response = template.getForObject("/anydata", String.class);
-        assertThat(response, containsString("{\"name\":\"resttest\",\"number\":1}"));
     }
 }

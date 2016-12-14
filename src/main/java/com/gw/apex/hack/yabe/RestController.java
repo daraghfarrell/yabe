@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Date;
+
 /**
  * @author dfarrell on 13/12/2016.
  */
@@ -15,7 +17,7 @@ public class RestController {
 
     @RequestMapping("/rlive")
     public String rlive() {
-        return "rlive";
+        return "\n*****\nrlive: "+new Date()+"\n*****\n";
     }
 
     @RequestMapping("/rlist")

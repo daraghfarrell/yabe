@@ -46,12 +46,6 @@ public class TestWebControllers {
     }
 
     @Test
-    public void testWebControllerSlashIs404() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.ALL))
-                .andExpect(status().isNotFound());
-    }
-
-    @Test
     public void testWebControllerAliveIs200() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/alive").accept(MediaType.ALL))
                 .andExpect(status().is2xxSuccessful());

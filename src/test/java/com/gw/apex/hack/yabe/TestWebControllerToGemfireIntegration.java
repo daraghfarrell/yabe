@@ -16,7 +16,7 @@ import static org.junit.Assert.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class TestWebControllerToDBIntegration {
+public class TestWebControllerToGemfireIntegration {
 
     @Autowired
     private TestRestTemplate template;
@@ -25,7 +25,7 @@ public class TestWebControllerToDBIntegration {
     private AnyDomainRepo anyDomainRepo;
 
     @Test
-    public void testWeCanDisplayAListonAWebPage() throws Exception {
+    public void testWeCanDisplayDomainObjectListonAWebPage() throws Exception {
         String name0 = "Name0";
         String name1 = "Name1";
         AnyDomainOne any0 = new AnyDomainOne(name0, 0);

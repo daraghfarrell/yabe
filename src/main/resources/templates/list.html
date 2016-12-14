@@ -23,6 +23,10 @@
         <tr th:each="prod: ${all}">
             <td th:text="${prod.name}"></td>
             <td th:text="${prod.number}"></td>
+            <td>
+                <a href="/list"
+                th:href="@{/removeFromList(name=${prod.name})}">delete</a>
+            </td>
         </tr>
         </tbody>
     </table>

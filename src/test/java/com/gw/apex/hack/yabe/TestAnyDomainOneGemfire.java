@@ -19,7 +19,7 @@ public class TestAnyDomainOneGemfire {
     AnyDomainRepo anyDomainRepo;
 
     @Test
-    public void testWeCanCreate() {
+    public void testWeCanCreateAndStoreADomainObject() {
         String name0 = "Name0";
         String name1 = "Name1";
         AnyDomainOne any0 = new AnyDomainOne(name0, 0);

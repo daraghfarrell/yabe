@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @SpringBootTest
-public class TestWebControllers {
+public class TestWebControllerMockedTests {
 
 
     private MockMvc mvc;

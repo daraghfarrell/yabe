@@ -49,4 +49,15 @@ public class WebController {
 
         return LIST_TEMPLATE;
     }
+
+    @RequestMapping("/removeFromList")
+    public String listRemove(
+            @RequestParam(value="name") String name,
+            Model model) {
+        anyDomainRepo.delete(name);
+        model.addAttribute("all", anyDomainRepo.findAll());
+
+        return LIST_TEMPLATE;
+    }
+
 }

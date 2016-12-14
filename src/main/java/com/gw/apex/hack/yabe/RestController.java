@@ -1,5 +1,6 @@
 package com.gw.apex.hack.yabe;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -8,10 +9,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @org.springframework.web.bind.annotation.RestController
 public class RestController {
+    @Autowired
+    AnyDomainRepo anyDomainRepo;
 
-    @RequestMapping("/anydata")
-    public AnyDomainOne anydata() {
-        return new AnyDomainOne("resttest", 1);
+    @RequestMapping("/alive")
+    public String anydata() {
+        return "alive";
+    }
+
+    @RequestMapping("/jlist")
+    public Iterable<AnyDomainOne> jlist() {
+        return anyDomainRepo.findAll();
     }
 
 }

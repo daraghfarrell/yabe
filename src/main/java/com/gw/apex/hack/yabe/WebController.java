@@ -21,6 +21,11 @@ public class WebController {
     @Autowired
     AnyDomainRepo anyDomainRepo;
 
+    @RequestMapping("/")
+    public String home(Model model) {
+        return "home";
+    }
+
     @RequestMapping("/alive")
     public String alive(Model model) {
         model.addAttribute("date", new Date());

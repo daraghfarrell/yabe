@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.gemfire.CacheFactoryBean;
 import org.springframework.data.gemfire.LocalRegionFactoryBean;
 import org.springframework.data.gemfire.repository.config.EnableGemfireRepositories;
+import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 import java.util.Properties;
 
@@ -20,6 +21,16 @@ import java.util.Properties;
 @EnableGemfireRepositories
 @Configuration
 public class App {
+
+    @Bean
+    public ServletContextTemplateResolver defaultTemplateResolver() {
+        ServletContextTemplateResolver resolver = new ServletContextTemplateResolver();
+        resolver.setPrefix("/WEB-INF/templates/");
+        resolver.setSuffix(".html");
+        resolver.setTemplateMode("LEGACYHTML5");
+        resolver.setOrder(1);
+        return resolver;
+    }
 
     @Bean
     Properties gemfireProperties() {

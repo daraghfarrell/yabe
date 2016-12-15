@@ -21,6 +21,12 @@ public class WebController {
     @Autowired
     AnyDomainRepo anyDomainRepo;
 
+    @RequestMapping("/home2")
+    public String home2(Model model) {
+        model.addAttribute("all", anyDomainRepo.findAll());
+        return "home2";
+    }
+
     @RequestMapping("/")
     public String home(Model model) {
         return "home";

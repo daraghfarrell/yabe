@@ -22,7 +22,7 @@ public class TestWebController {
     private TestRestTemplate template;
 
     @Test
-    public void testAliveReturnsHello() throws Exception {
+    public void testIsAlive() throws Exception {
         String response = template.getForObject("/alive", String.class);
         assertThat(response.contains("404"), is(false));
         assertThat(response, containsString("Hello"));
@@ -57,5 +57,10 @@ public class TestWebController {
         assertThat(response.contains("test567"), is(false));
     }
 
-
+    @Test
+    public void testHome2Displays() {
+        String response = template.getForObject("/home2", String.class);
+        String expected = "<title>YABE Home2</title>";
+        assertThat(response, containsString(expected));
+    }
 }

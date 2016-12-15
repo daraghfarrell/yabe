@@ -23,11 +23,11 @@ import java.util.Properties;
 public class App {
 
     @Bean
-    public ServletContextTemplateResolver templateResolver() {
+    public ServletContextTemplateResolver defaultTemplateResolver() {
         ServletContextTemplateResolver resolver = new ServletContextTemplateResolver();
         resolver.setPrefix("/WEB-INF/templates/");
         resolver.setSuffix(".html");
-        resolver.setTemplateMode("HTML5");
+        resolver.setTemplateMode("LEGACYHTML5");
         resolver.setOrder(1);
         return resolver;
     }

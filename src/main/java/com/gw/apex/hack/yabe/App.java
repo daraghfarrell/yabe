@@ -3,6 +3,7 @@ package com.gw.apex.hack.yabe;
 import com.gemstone.gemfire.cache.GemFireCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +21,7 @@ import java.util.Properties;
 @SpringBootApplication
 @EnableGemfireRepositories
 @Configuration
+@EnableAutoConfiguration
 public class App {
 
     @Bean

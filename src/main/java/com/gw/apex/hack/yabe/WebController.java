@@ -21,6 +21,11 @@ public class WebController {
     @Autowired
     AnyDomainRepo anyDomainRepo;
 
+    @RequestMapping("/btest")
+    public String btest(Model model) {
+        return "btest";
+    }
+
     @RequestMapping("/home2")
     public String home2(Model model) {
         model.addAttribute("all", anyDomainRepo.findAll());
@@ -65,5 +70,4 @@ public class WebController {
 
         return LIST_TEMPLATE;
     }
-
 }

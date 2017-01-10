@@ -22,8 +22,8 @@ public class TestWebController {
     private TestRestTemplate template;
 
     @Test
-    public void testStaticContent() throws Exception {
-        String response = template.getForObject("/btest.html", String.class);
+    public void testBootstrapExamplesLoad() throws Exception {
+        String response = template.getForObject("/bootstrap-exs", String.class);
         assertThat(response.contains("404"), is(false));
         assertThat(response, containsString("<title>Test Bootstrap</title>"));
     }

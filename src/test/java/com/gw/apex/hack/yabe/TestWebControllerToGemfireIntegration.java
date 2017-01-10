@@ -46,7 +46,6 @@ public class TestWebControllerToGemfireIntegration {
     @Test
     public void testWeCanAddToTheListOnTheWebPage() throws Exception {
         String response = template.getForObject("/addToList?name=Fred&number=1234", String.class);
-        assertThat(response, containsString("List:"));
         assertThat(response, containsString("Fred"));
         assertThat(response, containsString("1234"));
     }

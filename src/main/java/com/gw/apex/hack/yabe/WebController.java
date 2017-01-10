@@ -17,6 +17,7 @@ public class WebController {
 
     public static final String LIST_TEMPLATE = "list";
     public static final String ALIVE_TEMPLATE = "alive";
+    public static final String HOME_TEMPLATE = "home";
 
     @Autowired
     AnyDomainRepo anyDomainRepo;
@@ -26,10 +27,10 @@ public class WebController {
         return "bootstrap-exs";
     }
 
-    @RequestMapping("/home2")
+    @RequestMapping("/home")
     public String home2(Model model) {
         model.addAttribute("all", anyDomainRepo.findAll());
-        return "home2";
+        return HOME_TEMPLATE;
     }
 
     @RequestMapping("/")
@@ -58,7 +59,7 @@ public class WebController {
         anyDomainRepo.save(new AnyDomainOne(name, number));
         model.addAttribute("all", anyDomainRepo.findAll());
 
-        return LIST_TEMPLATE;
+        return HOME_TEMPLATE;
     }
 
     @RequestMapping("/removeFromList")
@@ -68,6 +69,6 @@ public class WebController {
         anyDomainRepo.delete(name);
         model.addAttribute("all", anyDomainRepo.findAll());
 
-        return LIST_TEMPLATE;
+        return HOME_TEMPLATE;
     }
 }

@@ -25,6 +25,9 @@ import java.util.Properties;
 public class App {
 
     @Bean
+    /**
+     * this allow us to parse non HTML5 HTML, otherwise we get lots of tag errors.
+     */
     public ServletContextTemplateResolver defaultTemplateResolver() {
         ServletContextTemplateResolver resolver = new ServletContextTemplateResolver();
         resolver.setPrefix("/WEB-INF/templates/");

@@ -1,0 +1,66 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link>
+<meta charset="utf-8"></meta>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+<title>List2</title>
+
+<!-- Bootstrap core CSS -->
+<link href="/resources/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap theme -->
+<link href="/resources/css/bootstrap-theme.min.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="/resources/css/theme.css" rel="stylesheet">
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+
+</head>
+
+<body>
+
+    <div>
+        <form action="/addToList">
+            <div class="form-group">
+                <input type="text" name="name" class="form-control" placeholder="some text..." aria-describedby="basic-addon1">
+            </div>
+            <div class="form-group">
+                <input type="number" name="number" class="form-control" placeholder="some number..." aria-describedby="basic-addon1">
+            </div>
+            <button type="submit" class="btn btn-sm btn-primary">Add</button></input>
+        </form>
+
+        <table>
+            <tbody>
+            <tr th:each="prod: ${all}">
+                <td th:text="${prod.name}"></td>
+                <td th:text="${prod.id}"></td>
+                <td>
+                    <a href="/list"
+                       th:href="@{/removeFromList(name=${prod.name})}">delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+<div class="col-sm-4">
+    <div class="list-group" th:each="prod: ${all}">
+        <a href="#" class="list-group-item active">
+            <h4 class="list-group-item-heading" th:text="${prod.name}"></h4>
+            <p class="list-group-item-text" th:text="${prod.id}"></p>
+        </a>
+    </div>
+</div><!-- /.col-sm-4 -->
+
+
+</body>
+</html>

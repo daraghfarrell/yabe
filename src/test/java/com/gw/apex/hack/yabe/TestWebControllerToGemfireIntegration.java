@@ -30,8 +30,8 @@ public class TestWebControllerToGemfireIntegration {
     public void testWeCanDisplayDomainObjectListonAWebPage() throws Exception {
         String name0 = "Name0";
         String name1 = "Name1";
-        Buyer any0 = new Buyer(name0, 0);
-        Buyer any1 = new Buyer(name1, 1);
+        Buyer any0 = new Buyer(name0);
+        Buyer any1 = new Buyer(name1);
 
         buyerRepo.save(any0);
         buyerRepo.save(any1);

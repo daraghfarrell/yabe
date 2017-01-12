@@ -1,40 +1,29 @@
 package com.gw.apex.hack.yabe.domain;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.PersistenceConstructor;
-import org.springframework.data.gemfire.mapping.Region;
+import lombok.experimental.Accessors;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * @author dfarrell on 13/12/2016.
  */
 
-@Region("vendor")
+@Entity
+@Accessors
 public class Vendor extends User {
-
     @Id
-    public String name;
-    public int number;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
-    @PersistenceConstructor
-    public Vendor(String name, int number) {
+    public Vendor(String name) {
         this.name = name;
-        this.number = number;
     }
 
-    @Override
-    public String toString() {
-        return "Buyer{" +
-                "name='" + name + '\'' +
-                ", number=" + number +
-                '}';
-    }
-
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
+    public long getId() {
+        return id;
     }
 
     public String getName() {
@@ -44,4 +33,6 @@ public class Vendor extends User {
     public void setName(String name) {
         this.name = name;
     }
+
+    private String name;
 }

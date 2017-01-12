@@ -29,8 +29,8 @@ public class TestDomainPersistance {
     public void testBuyerCreateAndStore() {
         String name0 = "Buyer0";
         String name1 = "Buyer1";
-        Buyer any0 = new Buyer(name0, 0);
-        Buyer any1 = new Buyer(name1, 1);
+        Buyer any0 = new Buyer(name0);
+        Buyer any1 = new Buyer(name1);
 
         buyerRepo.save(any0);
         buyerRepo.save(any1);
@@ -53,8 +53,8 @@ public class TestDomainPersistance {
         String name1 = "Vendor01";
         String name2 = "Vendor02";
 
-        Vendor vendor1 = new Vendor(name1, 1);
-        Vendor vendor2 = new Vendor(name2, 2);
+        Vendor vendor1 = new Vendor(name1);
+        Vendor vendor2 = new Vendor(name2);
 
         vendorRepo.save(vendor1);
         vendorRepo.save(vendor2);
@@ -71,5 +71,4 @@ public class TestDomainPersistance {
         vendorRepo.delete(vendor1);
         vendorRepo.delete(vendor2);
     }
-
 }

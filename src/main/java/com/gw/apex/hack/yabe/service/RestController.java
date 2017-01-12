@@ -16,6 +16,7 @@ import java.util.Date;
 public class RestController {
     @Autowired
     BuyerRepo buyerRepo;
+    private Buyer entity;
 
     @RequestMapping("/rlive")
     public String rlive() {
@@ -31,7 +32,8 @@ public class RestController {
     public Iterable<Buyer> rlistAdd(
             @RequestParam(value="name") String name,
             @RequestParam(value="number") int number) {
-        buyerRepo.save(new Buyer(name, number));
+        entity = new Buyer(name);
+        buyerRepo.save(entity);
         return buyerRepo.findAll();
     }
 

@@ -26,6 +26,7 @@ public class WebController {
 
     @Autowired
     BuyerRepo buyerRepo;
+    private Buyer entity;
 
     @RequestMapping("/bootstrap-exs")
     public String btest(Model model) {
@@ -77,7 +78,8 @@ public class WebController {
             @RequestParam(value="number") int number,
             Model model) {
 
-        buyerRepo.save(new Buyer(name, number));
+        entity = new Buyer(name);
+        buyerRepo.save(entity);
         model.addAttribute("all", buyerRepo.findAll());
 
         return HOME_TEMPLATE;

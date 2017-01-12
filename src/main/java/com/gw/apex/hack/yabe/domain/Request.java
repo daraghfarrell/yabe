@@ -2,10 +2,8 @@ package com.gw.apex.hack.yabe.domain;
 
 import lombok.experimental.Accessors;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
+import java.util.ArrayList;
 
 /**
  * Created by wmanning on 12/01/2017.
@@ -16,7 +14,13 @@ public abstract class Request<T extends User, R extends Request> {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
+    @OneToOne
     private Item item;
+
+    @OneToOne
     private T user;
-    private R[] request;
+
+    @ManyToMany(mappedBy = "request")
+    private ArrayList<R> request;
 }

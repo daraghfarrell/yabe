@@ -17,9 +17,12 @@ import java.util.Date;
 @Controller
 public class WebController {
 
-    public static final String LIST_TEMPLATE = "list";
-    public static final String ALIVE_TEMPLATE = "alive";
-    public static final String HOME_TEMPLATE = "home";
+    private static final String LIST_TEMPLATE = "list";
+    private static final String ALIVE_TEMPLATE = "alive";
+    private static final String HOME_TEMPLATE = "home";
+    private static final String BUYER_TEMPLATE = "buyer";
+    private static final String VENDOR_TEMPLATE = "vendor";
+    private static final String NAVBAR_TEMPLATE = "navbar";
 
     @Autowired
     BuyerRepo buyerRepo;
@@ -44,6 +47,22 @@ public class WebController {
     public String alive(Model model) {
         model.addAttribute("date", new Date());
         return ALIVE_TEMPLATE;
+    }
+
+    @RequestMapping("/buyer")
+    public String buyer(Model model) {
+        return BUYER_TEMPLATE;
+    }
+
+    @RequestMapping("/vendor")
+    public String vendor(Model model) {
+        return VENDOR_TEMPLATE;
+    }
+
+
+    @RequestMapping("/navbar")
+    public String navbar(Model model) {
+        return NAVBAR_TEMPLATE;
     }
 
     @RequestMapping("/list")

@@ -22,6 +22,7 @@ public class WebController {
     public static final String ALIVE_TEMPLATE = "alive";
     public static final String HOME_TEMPLATE = "home";
     public static final String BUYER_TEMPLATE = "buyer";
+    private static final String NAVBAR_TEMPLATE = "navbar";
 
     @Autowired
     BuyerRepo buyerRepo;
@@ -54,6 +55,12 @@ public class WebController {
     @RequestMapping("/buyer")
     public String buyer(Model model) {
         return BUYER_TEMPLATE;
+    }
+
+
+    @RequestMapping("/navbar")
+    public String navbar(Model model) {
+        return NAVBAR_TEMPLATE;
     }
 
     @RequestMapping("/list")

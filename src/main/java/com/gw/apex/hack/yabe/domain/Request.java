@@ -19,7 +19,7 @@ public abstract class Request<T extends User, R extends Request> {
 
     @OneToOne
     private T user;
-//
+
 //    @ManyToMany(mappedBy = "request")
 //    private ArrayList<R> request;
 }

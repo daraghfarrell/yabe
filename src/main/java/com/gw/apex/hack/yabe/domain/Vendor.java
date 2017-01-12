@@ -7,10 +7,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import javax.persistence.Entity;
+
 /**
  * @author dfarrell on 13/12/2016.
  */
-
 @Entity
 @Accessors
 public class Vendor extends User {

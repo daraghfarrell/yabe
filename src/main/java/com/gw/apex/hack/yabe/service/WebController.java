@@ -2,6 +2,7 @@ package com.gw.apex.hack.yabe.service;
 
 import com.gw.apex.hack.yabe.domain.Buyer;
 import com.gw.apex.hack.yabe.repo.BuyerRepo;
+import com.gw.apex.hack.yabe.repo.VendorRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,9 +21,13 @@ public class WebController {
     public static final String LIST_TEMPLATE = "list";
     public static final String ALIVE_TEMPLATE = "alive";
     public static final String HOME_TEMPLATE = "home";
+    public static final String BUYER_TEMPLATE = "buyer";
 
     @Autowired
     BuyerRepo buyerRepo;
+
+    @Autowired
+    VendorRepo vendorRepo;
 
     @RequestMapping("/bootstrap-exs")
     public String btest(Model model) {
@@ -37,13 +42,18 @@ public class WebController {
 
     @RequestMapping("/")
     public String home(Model model) {
-        return "home";
+        return HOME_TEMPLATE;
     }
 
     @RequestMapping("/alive")
     public String alive(Model model) {
         model.addAttribute("date", new Date());
         return ALIVE_TEMPLATE;
+    }
+
+    @RequestMapping("/buyer")
+    public String buyer(Model model) {
+        return BUYER_TEMPLATE;
     }
 
     @RequestMapping("/list")

@@ -1,14 +1,18 @@
 package com.gw.apex.hack.yabe;
 
-import com.gw.apex.hack.yabe.domain.Buyer;
-import com.gw.apex.hack.yabe.domain.Vendor;
-import com.gw.apex.hack.yabe.repo.BuyerRepo;
-import com.gw.apex.hack.yabe.repo.VendorRepo;
+import com.gw.apex.hack.yabe.domain.*;
+import com.gw.apex.hack.yabe.repo.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.*;
 
@@ -17,13 +21,23 @@ import static org.hamcrest.Matchers.*;
  */
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@DataJpaTest
+@Transactional
 public class TestDomainPersistance {
     @Autowired
     BuyerRepo buyerRepo;
 
     @Autowired
     VendorRepo vendorRepo;
+
+    @Autowired
+    RequestToBuyRepo rtbRepo;
+
+    @Autowired
+    RequestToSellRepo rtsRepo;
+
+    @Autowired
+    ItemRepo itemRepo;
 
     @Test
     public void testBuyerCreateAndStore() {
@@ -70,5 +84,39 @@ public class TestDomainPersistance {
 
         vendorRepo.delete(vendor1);
         vendorRepo.delete(vendor2);
+    }
+
+    @Test
+    public void testRequestToBuyCreateAndStore(){
+        String buyerName = "buyer";
+        Item item = new Item();
+
+        RequestToBuy rtb = new RequestToBuy();
+        rtb.setItem(item);
+        rtb.setUser(new Buyer("buyer"));
+
+        rtb = rtbRepo.save(rtb);
+
+        RequestToBuy retrievedRTB = rtbRepo.findOne(rtb.getId());
+        Item retrievedItem = retrievedRTB.getItem();
+
+        assertThat(retrievedRTB.getUser().getName(), is(buyerName));
+
+        String vendorName = "Vendor";
+
+        RequestToSell rts = new RequestToSell();
+        rts.setItem(itemRepo.findOne(retrievedItem.getId()));
+        rts.setUser(new Vendor(vendorName));
+        rts.addRequestToBuy(retrievedRTB);
+
+        rts = rtsRepo.save(rts);
+
+        RequestToSell retrievedRTS = rtsRepo.findOne(rts.getId());
+
+        assertThat(retrievedRTS.getUser().getName(), is(vendorName));
+        assertThat(retrievedRTS.getRequestToBuys().get(0).getId(), is(retrievedRTB.getId()));
+
+        rtbRepo.delete(retrievedRTB);
+        rtsRepo.delete(retrievedRTS);
     }
 }

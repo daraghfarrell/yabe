@@ -1,5 +1,7 @@
 package com.gw.apex.hack.yabe.domain;
 
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
@@ -9,17 +11,21 @@ import javax.persistence.*;
  */
 @MappedSuperclass
 @Accessors
-public abstract class Request<T extends User, R extends Request> {
+public abstract class Request<U extends User, R extends Request> {
+
+    @Getter
+    @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @OneToOne
+    @Getter
+    @Setter
+    @OneToOne(cascade = CascadeType.ALL)
     private Item item;
 
-    @OneToOne
-    private T user;
-
-//    @ManyToMany(mappedBy = "request")
-//    private ArrayList<R> request;
+    @Getter
+    @Setter
+    @OneToOne(cascade = CascadeType.ALL)
+    private U user;
 }

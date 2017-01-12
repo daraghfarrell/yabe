@@ -29,11 +29,11 @@ public class TestDomainPersistance {
     public void testBuyerCreateAndStore() {
         String name0 = "Buyer0";
         String name1 = "Buyer1";
-        Buyer any0 = new Buyer(name0);
-        Buyer any1 = new Buyer(name1);
+        Buyer buyer0 = new Buyer(name0);
+        Buyer buyer1 = new Buyer(name1);
 
-        buyerRepo.save(any0);
-        buyerRepo.save(any1);
+        buyerRepo.save(buyer0);
+        buyerRepo.save(buyer1);
 
         Buyer resultA = buyerRepo.findByName(name0);
         assertThat(name0, is(resultA.getName()));
@@ -44,8 +44,8 @@ public class TestDomainPersistance {
         assertThat(name0, not(resultB.getName()));
         assertThat(name1, not(resultA.getName()));
 
-        buyerRepo.delete(name0);
-        buyerRepo.delete(name1);
+        buyerRepo.delete(buyer0);
+        buyerRepo.delete(buyer1);
     }
 
     @Test

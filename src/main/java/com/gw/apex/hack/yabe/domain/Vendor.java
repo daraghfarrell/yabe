@@ -1,4 +1,4 @@
-package com.gw.apex.hack.yabe;
+package com.gw.apex.hack.yabe.domain;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
@@ -8,22 +8,22 @@ import org.springframework.data.gemfire.mapping.Region;
  * @author dfarrell on 13/12/2016.
  */
 
-@Region("test")
-public class AnyDomainOne {
+@Region("vendor")
+public class Vendor extends User {
 
     @Id
     public String name;
     public int number;
 
     @PersistenceConstructor
-    public AnyDomainOne(String name, int number) {
+    public Vendor(String name, int number) {
         this.name = name;
         this.number = number;
     }
 
     @Override
     public String toString() {
-        return "AnyDomainOne{" +
+        return "Buyer{" +
                 "name='" + name + '\'' +
                 ", number=" + number +
                 '}';

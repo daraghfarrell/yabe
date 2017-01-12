@@ -1,5 +1,7 @@
-package com.gw.apex.hack.yabe;
+package com.gw.apex.hack.yabe.service;
 
+import com.gw.apex.hack.yabe.domain.Buyer;
+import com.gw.apex.hack.yabe.repo.BuyerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +22,7 @@ public class WebController {
     public static final String HOME_TEMPLATE = "home";
 
     @Autowired
-    AnyDomainRepo anyDomainRepo;
+    BuyerRepo buyerRepo;
 
     @RequestMapping("/bootstrap-exs")
     public String btest(Model model) {
@@ -29,7 +31,7 @@ public class WebController {
 
     @RequestMapping("/home")
     public String home2(Model model) {
-        model.addAttribute("all", anyDomainRepo.findAll());
+        model.addAttribute("all", buyerRepo.findAll());
         return HOME_TEMPLATE;
     }
 
@@ -46,7 +48,7 @@ public class WebController {
 
     @RequestMapping("/list")
     public String list(Model model) {
-        model.addAttribute("all", anyDomainRepo.findAll());
+        model.addAttribute("all", buyerRepo.findAll());
         return LIST_TEMPLATE;
     }
 
@@ -56,8 +58,8 @@ public class WebController {
             @RequestParam(value="number") int number,
             Model model) {
 
-        anyDomainRepo.save(new AnyDomainOne(name, number));
-        model.addAttribute("all", anyDomainRepo.findAll());
+        buyerRepo.save(new Buyer(name, number));
+        model.addAttribute("all", buyerRepo.findAll());
 
         return HOME_TEMPLATE;
     }
@@ -66,8 +68,8 @@ public class WebController {
     public String listRemove(
             @RequestParam(value="name") String name,
             Model model) {
-        anyDomainRepo.delete(name);
-        model.addAttribute("all", anyDomainRepo.findAll());
+        buyerRepo.delete(name);
+        model.addAttribute("all", buyerRepo.findAll());
 
         return HOME_TEMPLATE;
     }

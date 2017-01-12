@@ -82,7 +82,7 @@ public class WebController {
         buyerRepo.save(entity);
         model.addAttribute("all", buyerRepo.findAll());
 
-        return HOME_TEMPLATE;
+        return LIST_TEMPLATE;
     }
 
     @RequestMapping("/removeFromList")

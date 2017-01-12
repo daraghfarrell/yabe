@@ -26,40 +26,9 @@
   </head>
 
   <body>
-
-  <!-- Fixed navbar -->
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-          <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="#">Bootstrap theme</a>
-          </div>
-          <div id="navbar" class="navbar-collapse collapse">
-              <ul class="nav navbar-nav">
-                  <li class="active"><a href="#">Home</a></li>
-                  <li><a href="#about">About</a></li>
-                  <li><a href="#contact">Contact</a></li>
-                  <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                      <ul class="dropdown-menu">
-                          <li><a href="#">Action</a></li>
-                          <li><a href="#">Another action</a></li>
-                          <li><a href="#">Something else here</a></li>
-                          <li role="separator" class="divider"></li>
-                          <li class="dropdown-header">Nav header</li>
-                          <li><a href="#">Separated link</a></li>
-                          <li><a href="#">One more separated link</a></li>
-                      </ul>
-                  </li>
-              </ul>
-          </div><!--/.nav-collapse -->
-      </div>
-  </nav>
+  <!--start navbar-->
+  <div th:include="navbar"><p>??</p></div>
+  <!--end navbar-->
 
   <div class="container theme-showcase" role="main">
 
@@ -73,40 +42,6 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
       <!-- Include all compiled plugins (below), or include individual files as needed -->
       <script src="../js/bootstrap.min.js"></script>
-
-      <div>
-          <form action="/addToList">
-              <div class="form-group">
-                  <input type="text" name="name" class="form-control" placeholder="some text..." aria-describedby="basic-addon1">
-              </div>
-              <div class="form-group">
-                  <input type="number" name="number" class="form-control" placeholder="some number..." aria-describedby="basic-addon1">
-              </div>
-              <button type="submit" class="btn btn-sm btn-primary">Add</button></input>
-          </form>
-
-          <table>
-              <tbody>
-              <tr th:each="prod: ${all}">
-                  <td th:text="${prod.name}"></td>
-                  <td th:text="${prod.id}"></td>
-                  <td>
-                      <a href="/list"
-                         th:href="@{/removeFromList(name=${prod.name})}">delete</a>
-                  </td>
-              </tr>
-              </tbody>
-          </table>
-      </div>
-
-      <div class="col-sm-4">
-          <div class="list-group" th:each="prod: ${all}">
-              <a href="#" class="list-group-item active">
-                  <h4 class="list-group-item-heading" th:text="${prod.name}"></h4>
-                  <p class="list-group-item-text" th:text="${prod.id}"></p>
-              </a>
-          </div>
-      </div><!-- /.col-sm-4 -->
 
 
   </div> <!-- /container -->

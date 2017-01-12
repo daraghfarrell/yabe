@@ -23,7 +23,7 @@ public class TestWebVendor {
 
 
     @Test
-    public void testBuyerPageExists() throws Exception {
+    public void testVendorPageExists() throws Exception {
         String response = template.getForObject("/vendor", String.class);
         assertThat(response.contains("404"), is(false));
         assertThat(response, containsString("<title>Vendor</title>"));

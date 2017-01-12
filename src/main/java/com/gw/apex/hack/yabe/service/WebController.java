@@ -23,6 +23,8 @@ public class WebController {
     private static final String BUYER_TEMPLATE = "buyer";
     private static final String VENDOR_TEMPLATE = "vendor";
     private static final String NAVBAR_TEMPLATE = "navbar";
+    public static final String HEADER_TEMPLATE = "header";
+    public static final String TAIL_TEMPLATE = "tail";
 
     @Autowired
     BuyerRepo buyerRepo;
@@ -60,10 +62,19 @@ public class WebController {
         return VENDOR_TEMPLATE;
     }
 
-
     @RequestMapping("/navbar")
     public String navbar(Model model) {
         return NAVBAR_TEMPLATE;
+    }
+
+    @RequestMapping("/header")
+    public String header(Model model) {
+        return HEADER_TEMPLATE;
+    }
+
+    @RequestMapping("/tail")
+    public String tail(Model model) {
+        return TAIL_TEMPLATE;
     }
 
     @RequestMapping("/list")

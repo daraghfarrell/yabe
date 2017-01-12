@@ -1,4 +1,4 @@
-package com.gw.apex.hack.yabe;
+package com.gw.apex.hack.yabe.domain;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;

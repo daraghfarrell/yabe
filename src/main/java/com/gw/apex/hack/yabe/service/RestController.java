@@ -1,5 +1,7 @@
-package com.gw.apex.hack.yabe;
+package com.gw.apex.hack.yabe.app;
 
+import com.gw.apex.hack.yabe.domain.AnyDomainOne;
+import com.gw.apex.hack.yabe.repo.AnyDomainRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

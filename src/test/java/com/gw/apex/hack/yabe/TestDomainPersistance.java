@@ -1,5 +1,7 @@
 package com.gw.apex.hack.yabe;
 
+import com.gw.apex.hack.yabe.domain.Buyer;
+import com.gw.apex.hack.yabe.repo.AnyDomainRepo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +16,7 @@ import static org.hamcrest.Matchers.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class TestAnyDomainOneGemfire {
+public class TestDomainOneGemfire {
     @Autowired
     AnyDomainRepo anyDomainRepo;
 
@@ -22,16 +24,16 @@ public class TestAnyDomainOneGemfire {
     public void testWeCanCreateAndStoreADomainObject() {
         String name0 = "Name0";
         String name1 = "Name1";
-        AnyDomainOne any0 = new AnyDomainOne(name0, 0);
-        AnyDomainOne any1 = new AnyDomainOne(name1, 1);
+        Buyer any0 = new Buyer(name0, 0);
+        Buyer any1 = new Buyer(name1, 1);
 
         anyDomainRepo.save(any0);
         anyDomainRepo.save(any1);
 
-        AnyDomainOne resultA = anyDomainRepo.findByName(name0);
+        Buyer resultA = anyDomainRepo.findByName(name0);
         assertThat(name0, is(resultA.getName()));
 
-        AnyDomainOne resultB = anyDomainRepo.findByName(name1);
+        Buyer resultB = anyDomainRepo.findByName(name1);
         assertThat(name1, is(resultB.getName()));
 
         assertThat(name0, not(resultB));

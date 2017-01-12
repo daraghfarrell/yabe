@@ -39,7 +39,7 @@ public class TestWebController {
     public void testHomePageExists() throws Exception {
         String response = template.getForObject("/", String.class);
         assertThat(response.contains("404"), is(false));
-        assertThat(response, containsString("<title>YABE</title>"));
+        assertThat(response, containsString("<title>yabE</title>"));
     }
 
     @Test

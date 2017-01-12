@@ -1,7 +1,7 @@
-package com.gw.apex.hack.yabe.service;
+package com.gw.apex.hack.yabe.app;
 
-import com.gw.apex.hack.yabe.domain.Buyer;
-import com.gw.apex.hack.yabe.repo.BuyerRepo;
+import com.gw.apex.hack.yabe.domain.AnyDomainOne;
+import com.gw.apex.hack.yabe.repo.AnyDomainRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,7 +15,7 @@ import java.util.Date;
 @org.springframework.web.bind.annotation.RestController
 public class RestController {
     @Autowired
-    BuyerRepo buyerRepo;
+    AnyDomainRepo anyDomainRepo;
 
     @RequestMapping("/rlive")
     public String rlive() {
@@ -23,22 +23,22 @@ public class RestController {
     }
 
     @RequestMapping("/rlist")
-    public Iterable<Buyer> rlist() {
-        return buyerRepo.findAll();
+    public Iterable<AnyDomainOne> rlist() {
+        return anyDomainRepo.findAll();
     }
 
     @RequestMapping("/rlist-add")
-    public Iterable<Buyer> rlistAdd(
+    public Iterable<AnyDomainOne> rlistAdd(
             @RequestParam(value="name") String name,
             @RequestParam(value="number") int number) {
-        buyerRepo.save(new Buyer(name, number));
-        return buyerRepo.findAll();
+        anyDomainRepo.save(new AnyDomainOne(name, number));
+        return anyDomainRepo.findAll();
     }
 
     @RequestMapping("/rlist-remove")
-    public Iterable<Buyer>rlistRemove(
+    public Iterable<AnyDomainOne>rlistRemove(
             @RequestParam(value="name") String name) {
-        buyerRepo.delete(name);
-        return buyerRepo.findAll();
+        anyDomainRepo.delete(name);
+        return anyDomainRepo.findAll();
     }
 }

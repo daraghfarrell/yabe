@@ -1,10 +1,8 @@
-package com.gw.apex.hack.yabe;
+package com.gw.apex.hack.yabe.app;
 
 import com.gemstone.gemfire.cache.GemFireCache;
-import com.gw.apex.hack.yabe.domain.Buyer;
-import com.gw.apex.hack.yabe.domain.Vendor;
-import com.gw.apex.hack.yabe.repo.BuyerRepo;
-import com.gw.apex.hack.yabe.repo.VendorRepo;
+import com.gw.apex.hack.yabe.domain.AnyDomainOne;
+import com.gw.apex.hack.yabe.repo.AnyDomainRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -59,31 +57,17 @@ public class App {
     }
 
     @Bean
-    LocalRegionFactoryBean<String, Vendor> vendorRegion(final GemFireCache cache) {
-        LocalRegionFactoryBean<String, Vendor> vendorRegion = new LocalRegionFactoryBean<>();
-        vendorRegion.setCache(cache);
-        vendorRegion.setClose(false);
-        vendorRegion.setName("vendor");
-        vendorRegion.setPersistent(false);
-        return vendorRegion;
+    LocalRegionFactoryBean<String, AnyDomainOne> testRegion(final GemFireCache cache) {
+        LocalRegionFactoryBean<String, AnyDomainOne> testRegion = new LocalRegionFactoryBean<>();
+        testRegion.setCache(cache);
+        testRegion.setClose(false);
+        testRegion.setName("test");
+        testRegion.setPersistent(false);
+        return testRegion;
     }
 
-    @Bean
-    LocalRegionFactoryBean<String, Buyer> buyerRegion(final GemFireCache cache) {
-        LocalRegionFactoryBean<String, Buyer> buyerRegion = new LocalRegionFactoryBean<>();
-        buyerRegion.setCache(cache);
-        buyerRegion.setClose(false);
-        buyerRegion.setName("buyer");
-        buyerRegion.setPersistent(false);
-        return buyerRegion;
-    }
-
-
     @Autowired
-    BuyerRepo buyerRepo;
-
-    @Autowired
-    VendorRepo vendorRepo;
+    AnyDomainRepo anyDomainRepo;
 
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);

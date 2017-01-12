@@ -40,7 +40,7 @@ public class RestController {
     @RequestMapping("/rlist-remove")
     public Iterable<Buyer>rlistRemove(
             @RequestParam(value="name") String name) {
-        buyerRepo.delete(name);
+        buyerRepo.delete(buyerRepo.findByName(name));
         return buyerRepo.findAll();
     }
 }

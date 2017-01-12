@@ -7,8 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -47,9 +47,6 @@ public class TestRestController {
     public void testRestListRemove() throws Exception {
         String response = template.getForObject("/rlist-remove", String.class);
         assertThat(response.contains("400"), is(true));
-
-        response = template.getForObject("/rlist-remove?name=123", String.class);
-        assertThat(response, containsString("[]"));
 
         response = template.getForObject("/rlist-add?name=test4324&number=4324", String.class);
         assertThat(response.contains("404"), is(false));

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * @author dfarrell on 12/12/2016.
@@ -47,19 +48,22 @@ public class VendorController {
 
     @RequestMapping("/deals")
     public String deals(Model model) {
-        ArrayList deals = new ArrayList();
-        Iterable<RequestToBuy> rtbs = rtbRepo.findAll();
+        model.addAttribute("deals", getRequestToBuysDeals());
+        return "deals";
+    }
 
-        for(RequestToBuy item : rtbs) {
+    private Iterable<RequestToBuy> getRequestToBuysDeals() {
+        ArrayList deals = new ArrayList();
+        Iterator<RequestToBuy> rtbs = rtbRepo.findAll().iterator();
+
+        while(rtbs.hasNext()) {
+            RequestToBuy item = rtbs.next();
             if (item.getRequestToSells().size() > 0) {
                 deals.add(item);
             }
         }
-
-        model.addAttribute("deals", rtbs);
-        return "deals";
+        return deals;
     }
-
 
     @RequestMapping("/vendorAcceptRTB")
     public String vendorAcceptRTB(
@@ -68,7 +72,10 @@ public class VendorController {
         RequestToBuy requestToBuy = rtbRepo.findOne(id);
         requestToBuy.addRequestToSell(new RequestToSell());
         rtbRepo.save(requestToBuy);
-        return "viewRTB";
+
+        model.addAttribute("deals", getRequestToBuysDeals());
+
+        return "deals";
     }
 
 //    @RequestMapping("/addToList")

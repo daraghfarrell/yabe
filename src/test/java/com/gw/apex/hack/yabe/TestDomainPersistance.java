@@ -123,6 +123,7 @@ public class TestDomainPersistance {
     }
 
     @Test
+<<<<<<< HEAD
     public void testSampleDataloader() {
         SampleDataLoader sampleDataLoader = new SampleDataLoader();
         int count = 22;

@@ -53,4 +53,27 @@ public class TestWebVendor {
         assertThat(response, containsString("Open Request To Buys"));
         assertThat(response, containsString(buyerName));
     }
+
+    @Test
+    public void testRTBViewDetails () {
+        String buyerName = "buyer4328";
+        Item item = new Item();
+
+        RequestToBuy rtb = new RequestToBuy();
+        rtb.setItem(item);
+        rtb.setUser(new Buyer(buyerName));
+
+        rtb = rtbRepo.save(rtb);
+
+        String response = template.getForObject("/viewRTB?id="+rtb.getId(), String.class);
+        assertThat(response.contains("404"), is(false));
+
+        assertThat(response, containsString("Request To Buy Details"));
+
+        assertThat(response, containsString(buyerName));
+
+        rtbRepo.delete(rtb);
+
+    }
+
 }

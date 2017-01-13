@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @author dfarrell on 12/12/2016.
@@ -35,6 +36,14 @@ public class VendorController {
         return VENDOR_TEMPLATE;
     }
 
+
+    @RequestMapping("/viewRTB")
+    public String viewRTB(
+        @RequestParam(value="id") long id,
+        Model model) {
+        model.addAttribute("rtb", rtbRepo.findOne(id));
+        return "viewRTB";
+    }
 
 //    @RequestMapping("/addToList")
 //    public String addToList(

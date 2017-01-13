@@ -35,15 +35,15 @@
                     </thead>
                     <tbody>
 
-                    <tr th:each="prod: ${all}">
-                        <td th:text="${prod.id}"></td>
-                        <td th:text="${prod.user.name}"></td>
+                    <tr th:each="rtb: ${all}">
+                        <td th:text="${rtb.id}"></td>
+                        <td th:text="${rtb.user.name}"></td>
                         <td>??</td><!--<td th:text="${prod.item}</td>-->
                         <td>??</td>
 
                         <td>
                             <a href="/viewRTB"
-                               th:href="@{/view(id=${prod.id})}">view</a>
+                               th:href="@{/viewRTB(id=${rtb.id})}">view</a>
                         </td>
 
                         <!--<td>-->

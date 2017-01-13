@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>ViewRTB</title>
+        <div th:include="header"><</div>
+    </head>
+
+    <body>
+        <!--start navbar-->
+        <div th:include="navbar"><</div>
+        <!--end navbar-->
+
+        <div class="container theme-showcase" role="main">
+
+            <!-- Main jumbotron for a primary marketing message or call to action -->
+            <div class="jumbotron">
+                <h1>Request To Buy Details</h1>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>??</th>
+                    <th>??</th>
+                    <th>??</th>
+                    <th>??</th>
+                    <th>??</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <!--<tr th:each="one: ${rtb}">-->
+                <tr>
+                    <td th:text="${rtb.id}"></td>
+                    <td th:text="${rtb.user.name}"></td>
+                    <td>??</td><!--<td th:text="${prod.item}</td>-->
+                    <td>??</td>
+
+                    <td>
+                        <a href="/vendorAcceptRTB"
+                           th:href="@{/acceptRTB(id=${rtb.id})}">Accept</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+
+        </div> <!-- /container -->
+
+        <div th:include="tail"><</div>
+    </body>
+</html>

@@ -131,16 +131,33 @@ public class TestDomainPersistance {
         Iterator<RequestToBuy> it = rtbRepo.findAll().iterator();
         int size = 0;
         int evens = 0;
-        while(it.hasNext()) {
+        while (it.hasNext()) {
             RequestToBuy next = it.next();
-            if(next.getRequestToSells().size() > 0) {
+            if (next.getRequestToSells().size() > 0) {
                 evens++;
             }
             size++;
         }
 
         assertThat(count, is(size));
-        assertThat(evens, is(size/2));
+        assertThat(evens, is(size / 2));
+    }
+
+    @Test
+    public void testSaveRequestToBuy()
+    {
+        for(int i = 0; i < 10; i++) {
+            RequestToBuy buy = new RequestToBuy();
+            RequestToSell sell = new RequestToSell();
+
+            buy.addRequestToSell(sell);
+
+            buy = rtbRepo.save(buy);
+
+            RequestToBuy retrievedRTB = rtbRepo.findOne(buy.getId());
+
+            assertThat(retrievedRTB.getRequestToSells().size(), is(1));
+        }
 
     }
 }

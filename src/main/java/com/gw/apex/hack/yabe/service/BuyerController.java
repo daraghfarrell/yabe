@@ -62,6 +62,6 @@ public class BuyerController {
         requestToBuy.setUser(buyerRepo.findOne(new Long(requestToBuyForm.buyerId)));
 
         requestToBuyRepo.save(requestToBuy);
-        return "vendor";
+        return "redirect:vendor";
     }
 }

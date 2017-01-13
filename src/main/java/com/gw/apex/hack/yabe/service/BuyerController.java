@@ -22,7 +22,14 @@ public class BuyerController {
 
     @ModelAttribute("buyers")
     public Iterable<Buyer> populateBuyers(){
-        return buyerRepo.findAll();
+
+        List<Buyer> buyers = new ArrayList<>();
+        buyers.add(new Buyer("buyerOne"));
+        buyers.add(new Buyer("buyerTwo"));
+        buyers.add(new Buyer("buyerThree"));
+
+        return buyers;
+//        return buyerRepo.findAll();
     }
 
     @RequestMapping("/buyer")

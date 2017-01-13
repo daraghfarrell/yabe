@@ -16,6 +16,10 @@
             <div class="jumbotron">
                 <h1>Buyer</h1>
                 <p>The place where buyer place Want To Buy Ads</p>
+                <select>
+                    <option th:each="buyer : ${buyers}" th:value="${buyer.id}"><div th:text="${buyer.name}" /></option>
+                </select>
+
             </div>
 
         </div> <!-- /container -->

@@ -2,7 +2,6 @@ package com.gw.apex.hack.yabe;
 
 import com.gw.apex.hack.yabe.domain.Buyer;
 import com.gw.apex.hack.yabe.domain.Item;
-import com.gw.apex.hack.yabe.domain.RequestToBuy;
 import com.gw.apex.hack.yabe.formobjects.RequestToBuyForm;
 import com.gw.apex.hack.yabe.repo.BuyerRepo;
 import com.gw.apex.hack.yabe.repo.ItemRepo;
@@ -18,12 +17,12 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
-
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
 /**
  * Created by wmanning on 13/01/2017.
@@ -62,8 +61,8 @@ public class TestBuyerController {
     @Test
     public void testLoadPage() throws Exception{
         this.mockMvc.perform(get("/buyer"))
-                .andExpect(model().attributeExists("buyers"))
-                .andExpect(model().attributeExists("requestToBuy"));
+                .andExpect(model().attributeExists("buyers"));
+//                .andExpect(model().attributeExists("requestToBuy"));
 
     }
 

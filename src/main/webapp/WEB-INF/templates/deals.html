@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Deals</title>
+        <div th:include="header"><</div>
+    </head>
+
+    <body>
+        <!--start navbar-->
+        <div th:include="navbar"><</div>
+        <!--end navbar-->
+
+        <div class="container theme-showcase" role="main">
+
+            <!-- Main jumbotron for a primary marketing message or call to action -->
+            <div class="jumbotron">
+                <h1>Current Deals</h1>
+                <p>All the deals currently in progress</p>
+            </div>
+
+        </div> <!-- /container -->
+
+        <div th:include="tail"><</div>
+    </body>
+</html>

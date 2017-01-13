@@ -76,4 +76,10 @@ public class TestWebVendor {
 
     }
 
+    @Test
+    public void testDeals() {
+        String response = template.getForObject("/deals", String.class);
+        assertThat(response.contains("404"), is(false));
+    }
+
 }

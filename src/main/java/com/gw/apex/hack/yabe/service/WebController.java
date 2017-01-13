@@ -20,8 +20,6 @@ public class WebController {
     private static final String LIST_TEMPLATE = "list";
     private static final String ALIVE_TEMPLATE = "alive";
     private static final String HOME_TEMPLATE = "home";
-    private static final String BUYER_TEMPLATE = "buyer";
-    private static final String VENDOR_TEMPLATE = "vendor";
     private static final String NAVBAR_TEMPLATE = "navbar";
     public static final String HEADER_TEMPLATE = "header";
     public static final String TAIL_TEMPLATE = "tail";
@@ -32,26 +30,16 @@ public class WebController {
     @Autowired
     RequestToBuyRepo rtbRepo;
 
-    @RequestMapping("/bootstrap-exs")
-    public String btest(Model model) {
-        return "bootstrap-exs";
-    }
-
-    @RequestMapping("/home")
-    public String home2(Model model) {
-        model.addAttribute("all", buyerRepo.findAll());
-        return HOME_TEMPLATE;
-    }
-
     @RequestMapping("/")
     public String home(Model model) {
         return "home";
     }
 
-    @RequestMapping("/alive")
-    public String alive(Model model) {
-        model.addAttribute("date", new Date());
-        return ALIVE_TEMPLATE;
+
+    @RequestMapping("/home")
+    public String home2(Model model) {
+        model.addAttribute("all", buyerRepo.findAll());
+        return HOME_TEMPLATE;
     }
 
     @RequestMapping("/navbar")
@@ -73,6 +61,17 @@ public class WebController {
     public String list(Model model) {
         model.addAttribute("all", buyerRepo.findAll());
         return LIST_TEMPLATE;
+    }
+
+    @RequestMapping("/alive")
+    public String alive(Model model) {
+        model.addAttribute("date", new Date());
+        return ALIVE_TEMPLATE;
+    }
+
+    @RequestMapping("/bootstrap-exs")
+    public String btest(Model model) {
+        return "bootstrap-exs";
     }
 
     @RequestMapping("/loadAll")

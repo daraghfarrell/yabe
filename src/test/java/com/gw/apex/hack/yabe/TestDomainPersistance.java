@@ -6,14 +6,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.hamcrest.Matchers.*;
+import java.util.Iterator;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -123,5 +120,27 @@ public class TestDomainPersistance {
 
         rtbRepo.delete(retrievedRTB);
 //        rtsRepo.delete(retrievedRTS);
+    }
+
+    @Test
+    public void testSampleDataloader() {
+        SampleDataLoader sampleDataLoader = new SampleDataLoader();
+        int count = 22;
+        sampleDataLoader.loadRequestToBuy(rtbRepo, count);
+
+        Iterator<RequestToBuy> it = rtbRepo.findAll().iterator();
+        int size = 0;
+        int evens = 0;
+        while(it.hasNext()) {
+            RequestToBuy next = it.next();
+            if(next.getRequestToSells().size() > 0) {
+                evens++;
+            }
+            size++;
+        }
+
+        assertThat(count, is(size));
+        assertThat(evens, is(size/2));
+
     }
 }

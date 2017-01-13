@@ -95,9 +95,9 @@ public class WebController {
     public String loadAll(Model model) {
 
         SampleDataLoader sampleDataLoader = new SampleDataLoader();
-        sampleDataLoader.loadRequestToBuy(rtbRepo);
 //        sampleDataLoader.loadItems(itemRepo);
 //        sampleDataLoader.loadBuyers(buyerRepo);
+        sampleDataLoader.loadRequestToBuy(rtbRepo, 10);
 
         return HOME_TEMPLATE;
     }

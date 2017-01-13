@@ -6,6 +6,7 @@ import com.gw.apex.hack.yabe.repo.BuyerRepo;
 import com.gw.apex.hack.yabe.repo.RequestToBuyRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
  */
 
 @Controller
+@Transactional
 public class VendorController {
 
     private static final String VENDOR_TEMPLATE = "vendor";
@@ -54,7 +56,7 @@ public class VendorController {
             }
         }
 
-        model.addAttribute("deals", deals);
+        model.addAttribute("deals", rtbs);
         return "deals";
     }
 
@@ -64,10 +66,10 @@ public class VendorController {
             @RequestParam(value="id") long id,
             Model model) {
         RequestToBuy requestToBuy = rtbRepo.findOne(id);
-        requestToBuy.getRequestToSells().add(new RequestToSell());
-        return "deals";
+        requestToBuy.addRequestToSell(new RequestToSell());
+        rtbRepo.save(requestToBuy);
+        return "viewRTB";
     }
-
 
 //    @RequestMapping("/addToList")
 //    public String addToList(

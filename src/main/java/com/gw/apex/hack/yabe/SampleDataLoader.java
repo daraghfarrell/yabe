@@ -5,8 +5,8 @@ import com.gw.apex.hack.yabe.domain.Item;
 import com.gw.apex.hack.yabe.domain.RequestToBuy;
 import com.gw.apex.hack.yabe.repo.BuyerRepo;
 import com.gw.apex.hack.yabe.repo.ItemRepo;
+import com.gw.apex.hack.yabe.domain.RequestToSell;
 import com.gw.apex.hack.yabe.repo.RequestToBuyRepo;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,14 +15,19 @@ import java.util.List;
  */
 public class SampleDataLoader {
 
-    public void loadRequestToBuy(RequestToBuyRepo requestToBuyRepo) {
-        for(int i = 0; i < 10; i++) {
+    public void loadRequestToBuy(RequestToBuyRepo requestToBuyRepo, int i) {
+        for(; i > 0; i--) {
             String buyerName = "buyer"+i;
             Item item = new Item("Item"+i);
 
             RequestToBuy rtb = new RequestToBuy();
             rtb.setItem(item);
             rtb.setUser(new Buyer(buyerName));
+
+            if((i%2)==0) { //even numbers
+                rtb.addRequestToSell(new RequestToSell());
+            }
+
             requestToBuyRepo.save(rtb);
         }
     }

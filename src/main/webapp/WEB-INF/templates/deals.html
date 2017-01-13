@@ -18,6 +18,32 @@
                 <p>All the deals currently in progress</p>
             </div>
 
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>User</th>
+                    <th>Items</th>
+                    <th>??</th>
+                    <th>??</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr th:each="rtb: ${deals}">
+                    <td th:text="${rtb.id}"></td>
+                    <td th:text="${rtb.user.name}"></td>
+                    <td>??</td>
+                    <td>??</td>
+
+                    <td>
+                        <a href="/vendorAcceptRTB"
+                           th:href="@{/vendorAcceptRTB(id=${rtb.id})}">Accept</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
         </div> <!-- /container -->
 
         <div th:include="tail"><</div>

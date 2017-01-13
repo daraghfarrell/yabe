@@ -1,7 +1,9 @@
 package com.gw.apex.hack.yabe.service;
 
+import com.gw.apex.hack.yabe.SampleDataLoader;
 import com.gw.apex.hack.yabe.domain.Buyer;
 import com.gw.apex.hack.yabe.repo.BuyerRepo;
+import com.gw.apex.hack.yabe.repo.RequestToBuyRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +30,9 @@ public class WebController {
 
     @Autowired
     BuyerRepo buyerRepo;
-    private Buyer entity;
+
+    @Autowired
+    RequestToBuyRepo rtbRepo;
 
     @RequestMapping("/bootstrap-exs")
     public String btest(Model model) {
@@ -52,13 +56,9 @@ public class WebController {
         return ALIVE_TEMPLATE;
     }
 
-//    @RequestMapping("/buyer")
-//    public String buyer(Model model) {
-//        return BUYER_TEMPLATE;
-//    }
-
     @RequestMapping("/vendor")
     public String vendor(Model model) {
+        model.addAttribute("all", rtbRepo.findAll());
         return VENDOR_TEMPLATE;
     }
 
@@ -89,7 +89,7 @@ public class WebController {
             @RequestParam(value="number") int number,
             Model model) {
 
-        entity = new Buyer(name);
+        Buyer entity = new Buyer(name);
         buyerRepo.save(entity);
         model.addAttribute("all", buyerRepo.findAll());
 
@@ -106,5 +106,12 @@ public class WebController {
         return HOME_TEMPLATE;
     }
 
+    @RequestMapping("/loadAll")
+    public String loadAll(Model model) {
 
+        SampleDataLoader sampleDataLoader = new SampleDataLoader();
+        sampleDataLoader.loadRequestToBuy(rtbRepo);
+
+        return HOME_TEMPLATE;
+    }
 }

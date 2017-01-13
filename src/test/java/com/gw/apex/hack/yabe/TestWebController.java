@@ -48,19 +48,4 @@ public class TestWebController {
         assertThat(response.contains("404"), is(false));
         assertThat(response, containsString("<title>List</title>"));
     }
-
-    @Test
-    public void testListAddAndDelete() throws Exception {
-        String response = template.getForObject("/list", String.class);
-        assertThat(response.contains("404"), is(false));
-        assertThat(response, containsString("<title>List</title>"));
-
-        response = template.getForObject("/addToList?name=test567&number=567", String.class);
-        assertThat(response.contains("404"), is(false));
-//        assertThat(response, containsString("test567"));
-
-        response = template.getForObject("/removeFromList?name=test567", String.class);
-        assertThat(response.contains("404"), is(false));
-//        assertThat(response.contains("test567"), is(false));
-    }
 }

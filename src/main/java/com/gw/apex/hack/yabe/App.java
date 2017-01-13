@@ -1,14 +1,10 @@
 package com.gw.apex.hack.yabe;
 
-import com.gw.apex.hack.yabe.repo.BuyerRepo;
-import com.gw.apex.hack.yabe.repo.VendorRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.gemfire.repository.config.EnableGemfireRepositories;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 /**
@@ -33,14 +29,7 @@ public class App {
         return resolver;
     }
 
-    @Autowired
-    BuyerRepo buyerRepo;
-
-    @Autowired
-    VendorRepo vendorRepo;
-
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
     }
-
 }

@@ -10,16 +10,54 @@
         <div th:include="navbar"><</div>
         <!--end navbar-->
 
-        <div class="container theme-showcase" role="main">
+        <div class="container theme-showcase" role="main"> <!--Start Container-->
 
             <!-- Main jumbotron for a primary marketing message or call to action -->
             <div class="jumbotron">
                 <h1>Vendor</h1>
-                <p>The Page for Vendors to View Want To Buy Ads</p>
+                <p>Where Vendors Can Browse Current Request To Buy Ads</p>
             </div>
 
-        </div> <!-- /container -->
+            <div class="page-header">
+                <h1>Open Request To Buys</h1>
+            </div>
 
-        <div th:include="tail"><</div>
+            <div class="col-md-6">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>??</th>
+                        <th>??</th>
+                        <th>??</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr th:each="prod: ${all}">
+                        <td th:text="${prod.id}"></td>
+                        <td th:text="${prod.user.name}"></td>
+                        <!--<td th:text="${prod.item}</td>-->
+                        <td>??</td>
+                        <td>
+                            <a href="/list"
+                               th:href="@{/removeFromList(name=${prod.id})}">delete</a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>1</td>
+                        <td>Mark</td>
+                        <td>??</td>
+                        <td>??</td>
+                        <td>??</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div> <!-- End Container -->
+
+            <div th:include="tail"><</div>
     </body>
 </html>

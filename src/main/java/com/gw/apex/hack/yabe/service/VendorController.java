@@ -77,27 +77,4 @@ public class VendorController {
 
         return "deals";
     }
-
-//    @RequestMapping("/addToList")
-//    public String addToList(
-//            @RequestParam(value="name") String name,
-//            @RequestParam(value="number") int number,
-//            Model model) {
-//
-//        Buyer entity = new Buyer(name);
-//        buyerRepo.save(entity);
-//        model.addAttribute("all", buyerRepo.findAll());
-//
-//        return LIST_TEMPLATE;
-//    }
-//
-//    @RequestMapping("/removeFromList")
-//    public String listRemove(
-//            @RequestParam(value="name") String name,
-//            Model model) {
-//        buyerRepo.delete(name);
-//        model.addAttribute("all", buyerRepo.findAll());
-//
-//        return HOME_TEMPLATE;
-//    }
 }

@@ -52,10 +52,10 @@ public class WebController {
         return ALIVE_TEMPLATE;
     }
 
-    @RequestMapping("/buyer")
-    public String buyer(Model model) {
-        return BUYER_TEMPLATE;
-    }
+//    @RequestMapping("/buyer")
+//    public String buyer(Model model) {
+//        return BUYER_TEMPLATE;
+//    }
 
     @RequestMapping("/vendor")
     public String vendor(Model model) {

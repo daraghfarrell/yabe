@@ -29,8 +29,6 @@ public class TestWebVendor {
     @Autowired
     RequestToBuyRepo rtbRepo;
 
-
-
     @Test
     public void testVendorPageExists() throws Exception {
         String response = template.getForObject("/vendor", String.class);
@@ -59,19 +57,19 @@ public class TestWebVendor {
     public void testRTBViewDetails () {
         String buyerName = "buyer4328";
         Item item = new Item();
-
         RequestToBuy rtb = new RequestToBuy();
         rtb.setItem(item);
         rtb.setUser(new Buyer(buyerName));
-
+        rtb.setVendorOffers(true);
         rtb = rtbRepo.save(rtb);
+
+
+//        String buyer2 = "buyer2"
 
         String response = template.getForObject("/viewRTB?id="+rtb.getId(), String.class);
         assertThat(response.contains("404"), is(false));
         assertThat(response, containsString("Request To Buy Details"));
         assertThat(response, containsString(buyerName));
-
-        rtbRepo.delete(rtb);
 
     }
 

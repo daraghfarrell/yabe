@@ -28,4 +28,8 @@ public abstract class Request<U extends User, R extends Request> {
     @Setter
     @OneToOne(cascade = CascadeType.ALL)
     private U user;
+
+    @Getter
+    @Setter
+    private boolean vendorOffers = false;
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * @author dfarrell on 12/12/2016.
@@ -47,22 +48,21 @@ public class VendorController {
 
     @RequestMapping("/deals")
     public String deals(Model model) {
-        model.addAttribute("deals", rtbRepo.findAll());
+        model.addAttribute("deals", getRequestToBuysDeals());
         return "deals";
     }
 
     private ArrayList<RequestToBuy> getRequestToBuysDeals() {
-//        ArrayList deals = new ArrayList();
-//        Iterator<RequestToBuy> rtbs = rtbRepo.findAll().iterator();
-//        while(rtbs.hasNext()) {
-//            RequestToBuy item = rtbs.next();
-//            if (item.getRequestToSells().size() > 0) {
-//                deals.add(item);
-//            }
-//        }
-//        return deals;
+        ArrayList deals = new ArrayList();
+        Iterator<RequestToBuy> rtbs = rtbRepo.findAll().iterator();
+        while(rtbs.hasNext()) {
+            RequestToBuy requestToBuy = rtbs.next();
+            if (requestToBuy.isVendorOffers()) {
+                deals.add(requestToBuy);
+            }
+        }
+        return deals;
 
-        return (ArrayList<RequestToBuy>) rtbRepo.findAll().iterator();
     }
 
     @RequestMapping("/vendorAcceptRTB")
@@ -71,9 +71,10 @@ public class VendorController {
             Model model) {
         RequestToBuy requestToBuy = rtbRepo.findOne(id);
         requestToBuy.addRequestToSell(new RequestToSell());
+        requestToBuy.setVendorOffers(true);
         rtbRepo.save(requestToBuy);
 
-        model.addAttribute("deals", rtbRepo.findAll());
+        model.addAttribute("deals", getRequestToBuysDeals());
 
         return "redirect:deals";
     }

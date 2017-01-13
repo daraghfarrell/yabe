@@ -61,8 +61,8 @@ public class TestBuyerController {
     @Test
     public void testLoadPage() throws Exception{
         this.mockMvc.perform(get("/buyer"))
-                .andExpect(model().attributeExists("buyers"));
-//                .andExpect(model().attributeExists("requestToBuy"));
+                .andExpect(model().attributeExists("buyers"))
+                .andExpect(model().attributeExists("requestToBuyForm"));
 
     }
 

@@ -5,6 +5,17 @@
     <title>NavBar</title>
 </head>
 <body>
+
+<script language="JavaScript">
+    $(document).ready(function () {
+        $.each($('#navbar').find('li'), function() {
+            $(this).toggleClass('active',
+                    $(this).find('a').attr('href') == window.location.pathname);
+        });
+    });
+
+</script>
+
 <!-- Fixed navbar -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
@@ -23,7 +34,7 @@
                 <li><a href="/buyer">Buyer</a></li>
                 <li><a href="/vendor">Vendor</a></li>
                 <li><a href="/deals">Deals</a></li>
-                <li><a href="/loadAll">LoadData</a></li>
+                <li><a href="/loadAll">LoadAll</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>

@@ -26,6 +26,7 @@ public class SampleDataLoader {
 
             if((i%2)==0) { //even numbers
                 rtb.addRequestToSell(new RequestToSell());
+                rtb.setVendorOffers(true);
             }
 
             requestToBuyRepo.save(rtb);

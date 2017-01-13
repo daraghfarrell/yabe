@@ -82,13 +82,22 @@ public class TestWebVendor {
         rtb.setItem(item);
         rtb.setUser(new Buyer(buyerName));
         rtb.addRequestToSell(new RequestToSell());
+        rtb.setVendorOffers(true);
 
-        rtb = rtbRepo.save(rtb);
+        rtbRepo.save(rtb);
+
+        String buyer2 = "buyer3213123";
+        RequestToBuy rtb2 = new RequestToBuy();
+        rtb2.setItem(new Item());
+        rtb2.setUser(new Buyer(buyer2));
+        rtb2.setVendorOffers(false);
+        rtbRepo.save(rtb2);
 
         String response = template.getForObject("/deals", String.class);
         assertThat(response.contains("404"), is(false));
         assertThat(response, containsString("Current Deals"));
         assertThat(response, containsString(buyerName));
+        assertThat(response.contains(buyer2), is(false));
 
         rtbRepo.delete(rtb);
     }

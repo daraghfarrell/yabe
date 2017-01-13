@@ -6,6 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 /**
  * @author dfarrell on 13/12/2016.
  */
-public interface BuyerRepo extends CrudRepository<Buyer, String> {
+public interface BuyerRepo extends CrudRepository<Buyer, Long> {
     Buyer findByName(String name0);
 }

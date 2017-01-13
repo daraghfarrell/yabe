@@ -19,6 +19,9 @@ public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
+    @Getter
+    @Setter
     private String name;
 
     public Item(){}

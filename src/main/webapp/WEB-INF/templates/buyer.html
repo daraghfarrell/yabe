@@ -14,16 +14,22 @@
 
             <!-- Main jumbotron for a primary marketing message or call to action -->
             <div class="jumbotron">
+                <form action="#" th:action = "@{/buyer}" th:object = "${requestToBuyForm}" method="post">
                 <h1>Buyer</h1>
                 <p>The place where buyer place Want To Buy Ads</p>
-                <select>
-                    <option th:each="buyer : ${buyers}" th:value="${buyer.id}"><div th:text="${buyer.name}" /></option>
+                <select th:field="*{buyerId}">
+                    <option th:each="buyerSelect : ${buyers}" th:value="${buyerSelect.id}" th:text="${buyerSelect.name}"></option>
                 </select>
+                <select th:field="*{itemId}">
+                    <option th:each="itemSelect : ${items}" th:value="${itemSelect.id}" th:text="${itemSelect.name}"></option>
+                </select>
+                <p><input type="submit" value="Submit" /></p>
+
+                </form>
 
             </div>
 
         </div> <!-- /container -->
-
         <div th:include="tail"><</div>
     </body>
 </html>

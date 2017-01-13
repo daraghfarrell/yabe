@@ -2,11 +2,13 @@ package com.gw.apex.hack.yabe.service;
 
 import com.gw.apex.hack.yabe.SampleDataLoader;
 import com.gw.apex.hack.yabe.repo.BuyerRepo;
+import com.gw.apex.hack.yabe.repo.ItemRepo;
 import com.gw.apex.hack.yabe.repo.RequestToBuyRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Date;
 
@@ -30,17 +32,25 @@ public class WebController {
     @Autowired
     RequestToBuyRepo rtbRepo;
 
-    @RequestMapping("/")
-    public String home(Model model) {
-        return "home";
-    }
+    @Autowired
+    ItemRepo itemRepo;
 
+    @RequestMapping("/bootstrap-exs")
+    public String btest(Model model) {
+        return "bootstrap-exs";
+    }
 
     @RequestMapping("/home")
     public String home2(Model model) {
         model.addAttribute("all", buyerRepo.findAll());
         return HOME_TEMPLATE;
     }
+
+    @RequestMapping("/")
+    public String home(Model model) {
+        return "home";
+    }
+
 
     @RequestMapping("/navbar")
     public String navbar(Model model) {
@@ -69,9 +79,16 @@ public class WebController {
         return ALIVE_TEMPLATE;
     }
 
-    @RequestMapping("/bootstrap-exs")
-    public String btest(Model model) {
-        return "bootstrap-exs";
+
+    @RequestMapping("/removeFromList")
+    public String listRemove(
+            @RequestParam(value="name") String name,
+            Model model) {
+        //xbuyerRepo.delete(name);
+        model.addAttribute("all", buyerRepo.findAll());
+
+        return HOME_TEMPLATE;
+
     }
 
     @RequestMapping("/loadAll")
@@ -79,6 +96,8 @@ public class WebController {
 
         SampleDataLoader sampleDataLoader = new SampleDataLoader();
         sampleDataLoader.loadRequestToBuy(rtbRepo);
+//        sampleDataLoader.loadItems(itemRepo);
+//        sampleDataLoader.loadBuyers(buyerRepo);
 
         return HOME_TEMPLATE;
     }

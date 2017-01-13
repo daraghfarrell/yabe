@@ -2,8 +2,12 @@ package com.gw.apex.hack.yabe;
 
 import com.gw.apex.hack.yabe.domain.Buyer;
 import com.gw.apex.hack.yabe.domain.Item;
+import com.gw.apex.hack.yabe.domain.RequestToBuy;
+import com.gw.apex.hack.yabe.formobjects.RequestToBuyForm;
 import com.gw.apex.hack.yabe.repo.BuyerRepo;
 import com.gw.apex.hack.yabe.repo.ItemRepo;
+import com.gw.apex.hack.yabe.repo.RequestToBuyRepo;
+import org.assertj.core.util.Lists;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,6 +22,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
 
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.assertThat;
+
 /**
  * Created by wmanning on 13/01/2017.
  */
@@ -31,6 +38,9 @@ public class TestBuyerController {
 
     @Autowired
     public BuyerRepo buyerRepo;
+
+    @Autowired
+    public RequestToBuyRepo requestToBuyRepo;
 
     @Autowired
     private WebApplicationContext wac;
@@ -52,7 +62,21 @@ public class TestBuyerController {
     @Test
     public void testLoadPage() throws Exception{
         this.mockMvc.perform(get("/buyer"))
-                .andExpect(model().attributeExists("buyers"));
+                .andExpect(model().attributeExists("buyers"))
+                .andExpect(model().attributeExists("requestToBuy"));
 
+    }
+
+    @Test
+    public void formSubmission() throws Exception{
+
+        RequestToBuyForm requestToBuyForm = new RequestToBuyForm();
+        requestToBuyForm.buyerId = "1";
+        requestToBuyForm.itemId = "1";
+
+        this.mockMvc.perform(post("/buyer").param("buyerId", "1").param("itemId","1"))
+                .andReturn();
+
+        assertThat(Lists.newArrayList(requestToBuyRepo.findAll()).get(0).getUser().getId(), is(new Long(1)));
     }
 }

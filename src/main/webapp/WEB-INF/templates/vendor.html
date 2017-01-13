@@ -38,20 +38,18 @@
                     <tr th:each="prod: ${all}">
                         <td th:text="${prod.id}"></td>
                         <td th:text="${prod.user.name}"></td>
-                        <!--<td th:text="${prod.item}</td>-->
+                        <td>??</td><!--<td th:text="${prod.item}</td>-->
                         <td>??</td>
-                        <td>
-                            <a href="/list"
-                               th:href="@{/removeFromList(name=${prod.id})}">delete</a>
-                        </td>
-                    </tr>
 
-                    <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>??</td>
-                        <td>??</td>
-                        <td>??</td>
+                        <td>
+                            <a href="/viewRTB"
+                               th:href="@{/view(id=${prod.id})}">view</a>
+                        </td>
+
+                        <!--<td>-->
+                            <!--<a href="/list"-->
+                               <!--th:href="@{/removeFromList(name=${prod.id})}">delete</a>-->
+                        <!--</td>-->
                     </tr>
                     </tbody>
                 </table>

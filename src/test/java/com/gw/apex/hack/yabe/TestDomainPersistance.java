@@ -116,7 +116,12 @@ public class TestDomainPersistance {
         assertThat(retrievedRTS.getUser().getName(), is(vendorName));
         assertThat(retrievedRTS.getRequestToBuys().get(0).getId(), is(retrievedRTB.getId()));
 
+        retrievedRTB.addRequestToSell(rtsRepo.findOne(rts.getId()));
+        rtbRepo.save(retrievedRTB);
+        retrievedRTB = rtbRepo.findOne(rtb.getId());
+        assertThat(retrievedRTB.getRequestToSells().get(0).getId(), is(retrievedRTS.getId()));
+
         rtbRepo.delete(retrievedRTB);
-        rtsRepo.delete(retrievedRTS);
+//        rtsRepo.delete(retrievedRTS);
     }
 }
